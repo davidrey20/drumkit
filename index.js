@@ -5,6 +5,8 @@ document.querySelectorAll(".drum").forEach((button, index) => {
     changeColor(button.textContent);
     // Play specific sound on clik
     playDrumSound(button.textContent);
+    //Animation
+    buttonAnimation(button.textContent);
   });
 });
 
@@ -60,6 +62,20 @@ function changeColor(letterClicked) {
       button.classList.add("text-white");
     } else {
       button.classList.remove("text-white");
+    }
+  });
+}
+
+function buttonAnimation(letterClicked) {
+  var buttons = document.querySelectorAll(".drum");
+
+  buttons.forEach(button => {
+    if (button.textContent === letterClicked) {
+      button.classList.add("pressed");
+
+      setTimeout(function() {
+        button.classList.remove("pressed");
+      }, 100);
     }
   });
 }
